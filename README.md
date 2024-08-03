@@ -70,4 +70,3 @@ Remove the alternate Spin version, reverting back to the root version of Spin, b
 ```sh
 spin verman rm current
 ```
-
