@@ -74,12 +74,12 @@ var rmAllCmd = &cobra.Command{
 }
 
 func rm(version string) error {
-	homeDir, err := os.UserHomeDir()
+	vermanDir, err := getVermanDir()
 	if err != nil {
 		return err
 	}
 
-	filePath := path.Join(homeDir, ".spin_verman", "versions", version)
+	filePath := path.Join(vermanDir, "versions", version)
 
 	if err := os.RemoveAll(filePath); err != nil {
 		return err

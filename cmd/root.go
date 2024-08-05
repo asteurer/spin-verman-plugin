@@ -2,6 +2,7 @@ package cmd
 
 import (
 	"os"
+	"path"
 
 	"github.com/spf13/cobra"
 )
@@ -19,6 +20,7 @@ func Execute() {
 
 func init() {
 	rootCmd.AddCommand(setCmd)
+	rootCmd.AddCommand(getCmd)
 	rootCmd.AddCommand(lsCmd)
 	rmCmd.AddCommand(rmAllCmd)
 	rmCmd.AddCommand(rmCurrentCmd)
@@ -38,4 +40,13 @@ func exists(path string) (bool, error) {
 	}
 
 	return false, err
+}
+
+func getVermanDir() (string, error) {
+	homeDir, err := os.UserHomeDir()
+	if err != nil {
+		return "", err
+	}
+
+	return path.Join(homeDir, ".spin_verman"), nil
 }

@@ -25,12 +25,12 @@ var lsCmd = &cobra.Command{
 }
 
 func list() (string, error) {
-	homeDir, err := os.UserHomeDir()
+	vermanDir, err := getVermanDir()
 	if err != nil {
 		return "", err
 	}
 
-	versionPath := path.Join(homeDir, ".spin_verman", "versions")
+	versionPath := path.Join(vermanDir, "versions")
 
 	pathExists, err := exists(versionPath)
 	if err != nil {
